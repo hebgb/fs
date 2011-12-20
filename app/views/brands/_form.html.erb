@@ -1,0 +1,65 @@
+<%= form_tag(get_brand_data_path, :method => :get, :remote => true) do %>
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Get Data", :name => nil %>
+	</p>
+<% end %>
+<%= form_for(@brand) do |f| %>
+  <% if @brand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+      <ul>
+      <% @brand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div id="test">
+		
+	</div>
+	<div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+	<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+	<div class="field">
+    <%= f.label "Facebook ID" %><br />
+    <%= f.text_field :fb_id, :id => "brand_id" %>
+  </div>
+	<div class="field">
+    <%= f.label :picture %><br />
+    <%= f.text_field :picture %>
+  </div>
+	<div class="field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+	<div class="field">
+    <%= f.label :likes %><br />
+    <%= f.text_field :likes %>
+  </div>
+	<div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+	<div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_area :website, :size => "50x5" %>
+  </div>
+	<div class="field">
+    <%= f.label :personal_info %><br />
+    <%= f.text_field :personal_info %>
+  </div>
+	<div class="field">
+    <%= f.label :talking_about_count %><br />
+    <%= f.text_field :talking_about_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<table width="100%" border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>Name:</th>
+		<th>Likes:</th>
+	</tr>
+	<tr>
+		<td><%= @brand.name %></td>
+		<td><%= @brand.likes %></td>
+	</tr>
+	<tr>
+		<th>Username:</th>
+		<th>Category:</th>
+	</tr>
+	<tr>
+		<td><%= @brand.username %></td>
+		<td><%= @brand.category %></td>
+	</tr>
+	<tr>
+		<th>Facebook ID:</th>
+		<th>Website(s):</th>
+	</tr>
+	<tr>
+		<td><%= @brand.fb_id %></td>
+		<td><%= format_websites @brand.website %></td>
+	</tr>
+	<tr>
+		<th>Picture:</th>
+		<th>Personal Info:</th>
+	</tr>
+	<tr>
+		<td rowspan="5"><%= image_tag @brand.picture %></td>
+		<td><%= @brand.personal_info %></td>
+	</tr>
+	<tr>
+		<th>Talking About Count:</th>
+	</tr>
+	<tr>
+		<td><%= @brand.talking_about_count %></td>
+	</tr>
+	<tr>
+		<th>Link:</th>
+	</tr>
+	<tr>
+		<td><%= link_to @brand.link, @brand.link, :target => '_blank' %></td>
+	</tr>
+</table>
+
+<%= link_to 'Edit', edit_brand_path(@brand) %> |
+<%= link_to 'Back', brands_path %>

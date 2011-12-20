@@ -1,0 +1,8 @@
+development:
+  app_id: 137811726323764
+  secret_key: 57627156c1c75d8e867965269f0a5700
+  callback_url: localhost:3000
+test:
+  ...
+production:
+  ...

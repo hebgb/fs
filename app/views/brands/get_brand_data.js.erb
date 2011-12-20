@@ -1,0 +1,5 @@
+<% fields = %w{ username name fb_id picture link likes category website personal_info talking_about_count } %>
+<% fields.each do |f| %>
+	<% if f == 'fb_id'; f = 'id'; end %>
+	$("#brand_<%= f %>").val("<%=j raw @data[f] %>");
+<% end %>
