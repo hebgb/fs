@@ -21,6 +21,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rails-footnotes', '>= 3.7.5.rc4', :group => :development
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -31,7 +33,7 @@ gem 'unicorn'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output

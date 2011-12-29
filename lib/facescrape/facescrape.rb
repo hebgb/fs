@@ -1,40 +1,49 @@
+require "koala"
+
 module Facescrape
-  class Filter
-    def initialize(data_obj)
-      @data = data_obj
+  class Brands
+    def initialize(brands)
+      @brands = brands
     end
-    attr_reader :data
+    attr_reader :brands
     
-    def brand_ids
+    def list_brands
+      @brands
+    end
+    
+    def brand_usernames
       ids = Array.new
-      @data.each do |d|
-        ids << d['id']
+      @brands.each do |b|
+        ids << b['username']
       end
       ids
     end
+  end
+  
+  class Posts
+    def initialize(graph, brands)
+      @graph = graph
+      @brands = brands
+    end
+    attr_reader :graph, :brands
     
-    def save_post_ids(ids)
-      # ids.each { |id| 
-      #   pid = PostsIds.new(id)
-      #   begin
-      #     pid.save!  
-      #   rescue Exception => e
-      #     logger.error
-      #   end
-      # }
-      id_arr = Array.new
-      ids.each do |id|
-        debugger
-        id_arr << PostIds.new({:post_id => id})
+    def list_ids
+      @f = Array.new
+      @brands.each do |brand|
+        @feed = @graph.get_connections(brand, "feed")        
+        @feed.each do |g|
+          @f << g["id"]
+        end  
       end
-      id_arr.each do |ida|
-        begin
-          ida.save!
-        rescue Exception => e
-          logger.error
-        end
-      end
+      return @f
     end
     
+    def list_posts(post_ids)
+      @posts = Array.new
+      post_ids.each do |pid|
+        @posts << @graph.get_object(pid)
+      end
+      return @posts
+    end
   end
 end

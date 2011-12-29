@@ -2,6 +2,8 @@ Facescrape::Application.routes.draw do
   resources :brands
   
   resources :info
+  
+  match "/posts" => "info#posts"
 
   match "/get_brand_data" => "brands#get_brand_data"
 

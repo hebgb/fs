@@ -1,1 +1,5 @@
-<%= @info %>
+<% @data.each do |d| %>
+<ul>
+	<%= content_tag :li, d %>
+</ul>
+<% end %>
