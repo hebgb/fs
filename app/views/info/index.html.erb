@@ -1,5 +1,28 @@
-<% @data.each do |d| %>
-<ul>
-	<%= content_tag :li, d %>
-</ul>
-<% end %>
+<table width="100%" border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td>
+			<% if @post_ids.kind_of?(Array) %>
+				<strong><%= @post_ids.class %> | <%= @post_ids.length %></strong>
+				<% @post_ids.each do |d| %>
+				<ul>
+					<%= content_tag :li, d %>
+				</ul>
+				<% end %>
+			<% else %>
+				<%= @post_ids %>
+			<% end %>
+		</td>
+		<td>
+			<% if @pids.kind_of?(Array) %>
+				<strong><%= @pids.class %> | <%= @pids.length %></strong>
+				<% @pids.each do |d| %>
+				<ul>
+					<%= content_tag :li, "#{d.brand_id}: #{d.post_id}" %>
+				</ul>
+				<% end %>
+			<% else %>
+				<%= @pids %>
+			<% end %>
+		</td>
+	</tr>
+</table>

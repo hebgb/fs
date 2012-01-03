@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229131344) do
+ActiveRecord::Schema.define(:version => 20120103150148) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(:version => 20111229131344) do
   end
 
   create_table "post_ids", :force => true do |t|
-    t.string   "post_id"
+    t.integer  "post_id",    :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id"
   end
 
   create_table "posts", :force => true do |t|

@@ -7,12 +7,6 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<% if flash[:notice] %>
-			<p class="notice"><%= flash[:notice] %></p>
-		<% end %>
-		<% if flash[:error] %>
-			<p class="error"><%= flash[:error] %></p>
-		<% end %>
 		<div id="fb-root"></div>
 		<script>
 		  window.fbAsyncInit = function() {
@@ -35,9 +29,16 @@
 		     d.getElementsByTagName('head')[0].appendChild(js);
 		   }(document));
 		</script>
+		
+		<% if flash[:notice] %>
+			<p class="notice"><%= flash[:notice] %></p>
+		<% end %>
+		<% if flash[:error] %>
+			<p class="error"><%= flash[:error] %></p>
+		<% end %>
 	
 		<div>
-			<%= link_to "Home", root_url %> | <%= link_to "Brands", brands_path %>
+			<%= link_to "Home", root_url %> | <%= link_to "Brands", brands_path %> | <%= link_to "Posts", posts_path %>
 		</div>	
 
 		<%= yield %>
