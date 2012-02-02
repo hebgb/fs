@@ -85,8 +85,6 @@ class BrandsController < ApplicationController
   end
   
   def get_brand_data
-    @access_token = @facebook_cookies["access_token"]
-    @graph = Koala::Facebook::API.new(@access_token)
     @data = @graph.get_object(params[:search])
     
     respond_to do |format|

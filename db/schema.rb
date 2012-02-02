@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103150148) do
+ActiveRecord::Schema.define(:version => 20120201173709) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -25,7 +25,26 @@ ActiveRecord::Schema.define(:version => 20120103150148) do
     t.text     "website"
     t.string   "personal_info"
     t.integer  "talking_about_count"
-    t.integer  "fb_id"
+    t.integer  "fb_id",               :limit => 8
+  end
+
+  create_table "comment_ids", :force => true do |t|
+    t.integer  "brand_id",   :limit => 8
+    t.integer  "post_id",    :limit => 8
+    t.integer  "comment_id", :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "comment_id",   :limit => 8
+    t.string   "from_name"
+    t.integer  "from_id",      :limit => 8
+    t.string   "message"
+    t.datetime "created_time"
+    t.integer  "likes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "infos", :force => true do |t|
@@ -34,14 +53,15 @@ ActiveRecord::Schema.define(:version => 20120103150148) do
   end
 
   create_table "post_ids", :force => true do |t|
-    t.integer  "post_id",    :limit => 255
+    t.integer  "post_id",    :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "brand_id"
+    t.integer  "brand_id",   :limit => 8
+    t.boolean  "has_post",                :default => false
   end
 
   create_table "posts", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "post_id",           :limit => 8
     t.string   "message"
     t.string   "picture"
     t.string   "link"
@@ -56,7 +76,8 @@ ActiveRecord::Schema.define(:version => 20120103150148) do
     t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "application"
+    t.integer  "brand_id",          :limit => 8
+    t.datetime "comment_check"
   end
 
   create_table "users", :force => true do |t|

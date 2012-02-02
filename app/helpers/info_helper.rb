@@ -9,4 +9,12 @@ module InfoHelper
     end
     text.html_safe
   end
+  
+  def total_num_brands
+    @brands = "Tracking #{Brand.all.count} Brands"
+  end
+  
+  def total_num_posts
+    @posts = "Tracking #{Post.all.count} Posts"
+  end
 end
